@@ -39,27 +39,19 @@ function getDogBreeds() {
         allBreeds = Object.keys(data.message)
         //console.log("dogbreeds", newArray)
 
-        // for(let i=0; i < newArray.length; i++) {
+        for(let i=0; i < newArray.length; i++) {
             
-        //     let li = document.createElement("li")
-        //     li.innerText = newArray[i]
-        //     dogbreeds.appendChild(li)
-        //     //console.log(li)
+            let li = document.createElement("li")
+            li.innerText = newArray[i]
+            dogbreeds.appendChild(li)
+            //console.log(li)
 
-        //     li.addEventListener('click', () => {
-        //         li.style.color = "blue";
-        //     })
-        // }
-        
+            li.addEventListener('click', () => {
+                li.style.color = "blue";
+            })
+        }
     })
 }
-testing()
-
-function testing() {
-    fetch("https://dog.ceo/api/breeds/list/all")
-    .then(resp => resp.json())
-    .then(function(data){
-        allBreeds = Object.keys(data.message)
 
         let filter = document.querySelector("#breed-dropdown")
         //console.log(filter) //used to see if we're grabbing the right tag where the drop down is in
@@ -71,10 +63,11 @@ function testing() {
         let newArray = allBreeds.filter((firstLetter) => {
             return firstLetter[0] === event.target.value
         })
+        let dogbreeds = document.querySelector('#dog-breeds')
+        dogbreeds.innerHTML = ""
         //console.log(newArray) returns the list of dog names that begins with (drop down list)
             for(list of newArray) {
-                let dogbreeds = document.querySelector('#dog-breeds')
-
+                
                 let li = document.createElement("li")
                 li.innerText = list
                 //li.innerText = event.target.value //test code
@@ -82,11 +75,5 @@ function testing() {
             }
 
     })
-})
-}
-
-
-
-
 
 }) //end of DOMContent
